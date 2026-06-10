@@ -42,12 +42,12 @@ export default function Footer({ onNavigate }: FooterProps) {
           >
             <span className="text-accent font-extrabold text-3xl">₹</span>
             <span className="font-serif-heading">Paisa</span>
-            <span className="text-gray-400 font-normal">Calc</span>
+            <span className="text-gray-300 font-normal">Calc</span>
           </button>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-300 leading-relaxed">
             India's Free Financial Calculator Suite — Plan smarter, accumulate wealth, compare income taxold regimes, and evaluate loans with absolute local privacy.
           </p>
-          <span className="block text-[10px] text-gray-500 font-mono">
+          <span className="block text-[10px] text-gray-300 font-mono">
             Version 2.5.0 • Released June 2026
           </span>
         </div>
@@ -91,10 +91,10 @@ export default function Footer({ onNavigate }: FooterProps) {
 
       {/* Advisory Warning & Statutory Copyright */}
       <div className="max-w-6xl mx-auto px-4 pt-8 border-t border-gray-800 text-center space-y-4">
-        <p className="text-[10px] text-gray-550 leading-relaxed max-w-4xl mx-auto italic text-gray-500">
+        <p className="text-[10px] leading-relaxed max-w-4xl mx-auto italic text-gray-300">
           Disclaimer: PaisaCalc provides calculations for informational and demonstration purposes only. We are not a SEBI registered entity, Chartered Accountants, or investment brokers. Please seek counsel from a certified CA prior to executing files or tax forms.
         </p>
-        <p className="text-xs text-gray-400 font-medium">
+        <p className="text-xs text-gray-300 font-medium">
           © 2025 - 2026 PaisaCalc. All rights reserved. Made for Indian taxpayers and savers.
         </p>
       </div>

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, lazy, Suspense } from 'react';
 import { ActiveView } from './types';
 import { BLOG_POSTS } from './data/blogData';
 import { motion } from 'motion/react';
@@ -12,25 +12,27 @@ import { motion } from 'motion/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Page Views
+// Static landing page import for instant paint
 import Home from './components/pages/Home';
-import About from './components/pages/About';
-import PrivacyPolicy from './components/pages/PrivacyPolicy';
-import Disclaimer from './components/pages/Disclaimer';
 
-// Blog Views
-import BlogListing from './components/blog/BlogListing';
-import BlogPost from './components/blog/BlogPost';
+// Lazy loaded page views
+const About = lazy(() => import('./components/pages/About'));
+const PrivacyPolicy = lazy(() => import('./components/pages/PrivacyPolicy'));
+const Disclaimer = lazy(() => import('./components/pages/Disclaimer'));
 
-// Calculator Views
-import EmiCalculator from './components/calculators/EmiCalculator';
-import SipCalculator from './components/calculators/SipCalculator';
-import IncomeTaxCalculator from './components/calculators/IncomeTaxCalculator';
-import FdRdCalculator from './components/calculators/FdRdCalculator';
-import PpfCalculator from './components/calculators/PpfCalculator';
-import HraCalculator from './components/calculators/HraCalculator';
-import GstCalculator from './components/calculators/GstCalculator';
-import GratuityCalculator from './components/calculators/GratuityCalculator';
+// Lazy loaded blog views
+const BlogListing = lazy(() => import('./components/blog/BlogListing'));
+const BlogPost = lazy(() => import('./components/blog/BlogPost'));
+
+// Lazy loaded calculators
+const EmiCalculator = lazy(() => import('./components/calculators/EmiCalculator'));
+const SipCalculator = lazy(() => import('./components/calculators/SipCalculator'));
+const IncomeTaxCalculator = lazy(() => import('./components/calculators/IncomeTaxCalculator'));
+const FdRdCalculator = lazy(() => import('./components/calculators/FdRdCalculator'));
+const PpfCalculator = lazy(() => import('./components/calculators/PpfCalculator'));
+const HraCalculator = lazy(() => import('./components/calculators/HraCalculator'));
+const GstCalculator = lazy(() => import('./components/calculators/GstCalculator'));
+const GratuityCalculator = lazy(() => import('./components/calculators/GratuityCalculator'));
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ActiveView>(ActiveView.HOME);
@@ -115,16 +117,22 @@ export default function App() {
 
       {/* Main Container with smooth entry and route transition animations */}
       <main className="flex-grow">
-        <motion.div
-          key={currentView + (currentView === ActiveView.BLOG_POST ? selectedPostSlug : '')}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.22, ease: 'easeOut' }}
-          className="w-full"
-        >
-          {renderContentView()}
-        </motion.div>
+        <Suspense fallback={
+          <div className="flex items-center justify-center min-h-[400px]" aria-busy="true" aria-live="polite">
+            <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        }>
+          <motion.div
+            key={currentView + (currentView === ActiveView.BLOG_POST ? selectedPostSlug : '')}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            className="w-full"
+          >
+            {renderContentView()}
+          </motion.div>
+        </Suspense>
       </main>
 
       {/* Global Footer */}

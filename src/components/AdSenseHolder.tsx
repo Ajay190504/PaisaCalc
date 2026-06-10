@@ -13,8 +13,8 @@ export default function AdSenseHolder({ label = 'Advertisement', className = 'my
       id={`ad-slot-${Math.random().toString(36).substr(2, 9)}`}
     >
       {/* ADSENSE AD SLOT — Replace this div with your AdSense ad unit code */}
-      <span className="text-xs tracking-wider text-gray-400 font-mono uppercase">{label}</span>
-      <span className="text-[10px] text-gray-300 font-sans mt-0.5">Placeholder Ad Slot for Adsense Campaign</span>
+      <span className="text-xs tracking-wider text-text-muted font-mono uppercase">{label}</span>
+      <span className="text-[10px] text-gray-500 font-sans mt-0.5">Placeholder Ad Slot for Adsense Campaign</span>
     </div>
   );
 }

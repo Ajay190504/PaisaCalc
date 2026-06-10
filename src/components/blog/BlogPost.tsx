@@ -27,7 +27,7 @@ export default function BlogPost({ post, onBack, onNavigateView, onNavigateToPos
     switch (block.type) {
       case 'p':
         return (
-          <p key={index} className="text-sm md:text-base text-gray-750 font-serif leading-relaxed mb-5 whitespace-pre-line text-justify">
+          <p key={index} className="text-sm md:text-base text-text font-serif leading-relaxed mb-5 whitespace-pre-line text-justify">
             {block.text}
           </p>
         );
