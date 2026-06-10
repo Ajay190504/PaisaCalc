@@ -81,8 +81,8 @@ export default function Home({ onNavigateView, onNavigateToBlog }: HomeProps) {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 md:py-24 relative overflow-hidden">
-        {/* Rupee watermark SVG pattern background (excludes from LCP calculation) */}
-        <svg className="absolute inset-0 m-auto w-80 h-80 opacity-[0.04] pointer-events-none select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {/* Rupee watermark SVG pattern background (excludes from LCP calculation and positioned statically to prevent CLS) */}
+        <svg className="absolute top-16 left-1/2 -translate-x-1/2 w-80 h-80 opacity-[0.04] pointer-events-none select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M6 3h12" />
           <path d="M6 8h12" />
           <path d="m6 13 8.5 8" />
