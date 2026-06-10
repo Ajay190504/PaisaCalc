@@ -81,10 +81,13 @@ export default function Home({ onNavigateView, onNavigateToBlog }: HomeProps) {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="bg-primary text-white py-16 md:py-24 relative overflow-hidden">
-        {/* Rupee watermark pattern background */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none select-none flex items-center justify-center text-[20rem] font-bold font-mono">
-          ₹
-        </div>
+        {/* Rupee watermark SVG pattern background (excludes from LCP calculation) */}
+        <svg className="absolute inset-0 m-auto w-80 h-80 opacity-[0.04] pointer-events-none select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M6 3h12" />
+          <path d="M6 8h12" />
+          <path d="m6 13 8.5 8" />
+          <path d="M6 13h3a4 4 0 0 0 0-8" />
+        </svg>
         
         <div className="max-w-6xl mx-auto px-4 relative z-10 text-center space-y-6">
           <span className="inline-block bg-accent text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase font-sans">
@@ -102,13 +105,13 @@ export default function Home({ onNavigateView, onNavigateToBlog }: HomeProps) {
                 const el = document.getElementById('calculators-grid');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-6 py-3.5 bg-accent text-primary rounded-xl font-bold text-sm hover:bg-yellow-500 shadow-lg shadow-accent/20 transition-all cursor-pointer"
+              className="w-48 py-3.5 bg-accent text-primary rounded-xl font-bold text-sm hover:bg-yellow-500 shadow-lg shadow-accent/20 transition-all cursor-pointer text-center justify-center"
             >
               Explore Calculators
             </button>
             <button
               onClick={() => onNavigateView(ActiveView.BLOG_LISTING)}
-              className="px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white rounded-xl font-bold text-sm transition cursor-pointer border border-white/10"
+              className="w-48 py-3.5 bg-white/10 hover:bg-white/15 text-white rounded-xl font-bold text-sm transition cursor-pointer border border-white/10 text-center justify-center"
             >
               Read Financial Blog
             </button>

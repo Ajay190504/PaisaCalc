@@ -41,9 +41,13 @@
       <main class="flex-grow">
         <div class="space-y-12 animate-pageEnter">
           <section class="bg-primary text-white py-16 md:py-24 relative overflow-hidden">
-            <div class="absolute inset-0 opacity-[0.04] pointer-events-none select-none flex items-center justify-center text-[20rem] font-bold font-mono">
-              ₹
-            </div>
+            <!-- Rupee watermark SVG pattern background (excludes from LCP calculation) -->
+            <svg class="absolute inset-0 m-auto w-80 h-80 opacity-[0.04] pointer-events-none select-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3h12" />
+              <path d="M6 8h12" />
+              <path d="m6 13 8.5 8" />
+              <path d="M6 13h3a4 4 0 0 0 0-8" />
+            </svg>
             <div class="max-w-6xl mx-auto px-4 relative z-10 text-center space-y-6">
               <span class="inline-block bg-accent text-primary px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase font-sans">
                 100% Free • No Signups • Safe & Secure
@@ -55,10 +59,10 @@
                 From housing loan EMIs to SIP returns to side-by-side Income Tax brackets — all premium Indian financial calculators in one unified suite.
               </p>
               <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-                <div class="px-6 py-3.5 bg-accent text-primary rounded-xl font-bold text-sm shadow-lg shadow-accent/20">
+                <div class="w-48 py-3.5 bg-accent text-primary rounded-xl font-bold text-sm shadow-lg shadow-accent/20 text-center justify-center">
                   Explore Calculators
                 </div>
-                <div class="px-6 py-3.5 bg-white/10 text-white rounded-xl font-bold text-sm border border-white/10">
+                <div class="w-48 py-3.5 bg-white/10 text-white rounded-xl font-bold text-sm border border-white/10 text-center justify-center">
                   Read Financial Blog
                 </div>
               </div>
